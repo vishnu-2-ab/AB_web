@@ -1,0 +1,108 @@
+:root {
+  --bg: #030303;
+  --text: #ffffff;
+  --text-dim: rgba(255, 255, 255, 0.6);
+  --primary: #8DC63F;
+  --primary-glow: rgba(141, 198, 63, 0.4);
+  --glass: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --font-heading: 'Outfit', sans-serif;
+  --nav-height: 70px;
+  --nav-bg: rgba(15, 15, 15, 0.85);
+}
+
+[data-theme="light"] {
+  --bg: #fdfdfd;
+  --text: #1a1a1a;
+  --text-dim: rgba(0, 0, 0, 0.6);
+  --primary: #7db534;
+  --nav-bg: rgba(255, 255, 255, 0.85);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { background-color: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; transition: background-color 0.8s ease; overflow-x: hidden; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
+
+/* Global Particles Background */
+#global-bg {
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;
+  mask-image: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, transparent 45%);
+  -webkit-mask-image: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, transparent 45%);
+  pointer-events: none;
+}
+
+/* Navigation */
+.main-nav { position: fixed; top: 0; left: 0; width: 100%; height: 100px; z-index: 1000; display: flex; align-items: center; }
+.nav-container { 
+  display: flex; justify-content: space-between; align-items: center; width: 100%; 
+  background: var(--nav-bg); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); 
+  border: 1px solid var(--glass-border); border-radius: 99px; padding: 12px 32px;
+  transition: 0.4s background;
+}
+.logo { text-decoration: none; color: var(--text); font-weight: 700; display: flex; align-items: center; gap: 12px; }
+.logo img { height: 26px; }
+
+.nav-right { display: flex; align-items: center; gap: 32px; }
+.nav-links { display: flex; list-style: none; gap: 28px; align-items: center; }
+.nav-links a { text-decoration: none; color: var(--text-dim); font-size: 0.9rem; font-weight: 500; transition: 0.3s; }
+.nav-links a:hover { color: var(--text); }
+
+.btn-primary-sm {
+  padding: 10px 24px; background: var(--text); color: var(--bg) !important; border-radius: 99px; 
+  font-weight: 700; text-decoration: none; font-size: 0.85rem; transition: 0.3s;
+  display: flex; align-items: center; justify-content: center;
+}
+.btn-primary-sm:hover { background: var(--primary); transform: scale(1.05); }
+
+/* Theme Toggle Refined */
+.theme-toggle {
+  background: rgba(255,255,255,0.08); border: 1px solid var(--glass-border);
+  border-radius: 99px; cursor: pointer; width: 56px; height: 30px;
+  position: relative; display: flex; align-items: center; padding: 4px;
+}
+.toggle-track { display: flex; justify-content: space-between; align-items: center; width: 100%; height: 100%; padding: 0 4px; }
+.toggle-track svg { width: 14px; height: 14px; stroke: var(--text); fill: none; transition: 0.3s; }
+.toggle-thumb {
+  position: absolute; top: 4px; left: 4px; width: 22px; height: 22px;
+  background: var(--primary); border-radius: 50%; transition: 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  box-shadow: 0 0 10px var(--primary-glow);
+}
+[data-theme="light"] .toggle-thumb { transform: translateX(26px); }
+
+/* Hero */
+.technical-hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; padding: 120px 0 60px; text-align: center; }
+.hero-container { z-index: 2; position: relative; }
+.hero-badge { font-size: 0.65rem; letter-spacing: 0.3em; color: var(--primary); margin-bottom: 24px; opacity: 0.7; }
+.hero-content h1 { font-family: var(--font-heading); font-size: clamp(2.5rem, 8vw, 6rem); font-weight: 800; line-height: 0.95; margin-bottom: 24px; letter-spacing: -0.04em; }
+.hero-content h1 span { color: var(--primary); }
+.hero-content p { color: var(--text-dim); font-size: 1.15rem; max-width: 600px; margin: 0 auto 40px; }
+.hero-actions { display: flex; gap: 20px; justify-content: center; align-items: center; }
+.btn-premium { padding: 18px 45px; background: var(--primary); color: #000; border-radius: 99px; font-weight: 700; text-decoration: none; box-shadow: 0 10px 30px var(--primary-glow); transition: 0.3s; }
+.btn-premium:hover { transform: translateY(-4px); box-shadow: 0 20px 50px var(--primary-glow); }
+.btn-link { color: var(--text-dim); text-decoration: none; font-weight: 500; font-size: 0.95rem; }
+
+/* Sections */
+section { padding: 140px 0; border-top: 1px solid var(--glass-border); position: relative; opacity: 1 !important; }
+.section-title { font-family: var(--font-heading); font-size: 3.5rem; font-weight: 800; margin-bottom: 20px; }
+.service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 60px; }
+.service-item { padding: 48px; background: radial-gradient(circle at var(--card-x, 50%) var(--card-y, 50%), rgba(141, 198, 63, 0.1) 0%, var(--glass) 60%); border: 1px solid var(--glass-border); border-radius: 32px; transition: 0.4s; }
+.service-item:hover { transform: translateY(-10px); border-color: var(--primary); }
+
+.philosophy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.phi-visual-container { width: 100%; height: 400px; background: var(--glass); border: 1px solid var(--glass-border); border-radius: 40px; position: relative; overflow: hidden; }
+#phi-canvas { width: 100%; height: 100%; }
+
+.footer { padding: 120px 0; background: #000; border-top: 1px solid var(--glass-border); text-align: center; }
+
+/* Mobile */
+@media (max-width: 968px) {
+  .nav-toggle { display: block; }
+  .nav-links { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: var(--bg); flex-direction: column; justify-content: center; transition: 0.4s; z-index: 1500; padding: 40px; gap: 30px; backdrop-filter: blur(40px); }
+  .nav-active .nav-links { right: 0; }
+  .hero-actions { flex-direction: column; width: 100%; gap: 15px; }
+  .btn-premium { width: 100%; text-align: center; }
+  .hero-content h1 { font-size: 2.8rem; }
+  .service-grid { grid-template-columns: 1fr; }
+  .philosophy-grid { grid-template-columns: 1fr; }
+}
