@@ -1,8 +1,7 @@
-import { initHeroCanvas, initPhiCanvas } from './heroCanvas.js'
+import { initHeroCanvas } from './heroCanvas.js'
 
 document.addEventListener('DOMContentLoaded', () => {
     initHeroCanvas();
-    initPhiCanvas();
     initHeroAnimations();
     initThemeToggle();
     initScrollReveal();
