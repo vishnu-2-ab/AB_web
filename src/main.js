@@ -8,7 +8,60 @@ document.addEventListener('DOMContentLoaded', () => {
     initMouseTracking();
     initCardSpotlights();
     initMobileMenu();
+    initFormHandlers();
 });
+
+function initFormHandlers() {
+    const forms = document.querySelectorAll('form');
+    forms.forEach(form => {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            
+            // Loading state
+            submitBtn.classList.add('loading');
+            submitBtn.textContent = 'Transmitting...';
+            
+            // Simulate API call
+            setTimeout(() => {
+                submitBtn.classList.remove('loading');
+                submitBtn.textContent = originalText;
+                form.reset();
+                showToast('Message Transmitted Successfully');
+            }, 1800);
+        });
+    });
+}
+
+function showToast(message) {
+    let container = document.querySelector('.toast-container');
+    if (!container) {
+        container = document.createElement('div');
+        container.className = 'toast-container';
+        document.body.appendChild(container);
+    }
+
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.innerHTML = `
+        <div class="toast-icon">✓</div>
+        <span>${message}</span>
+    `;
+
+    container.appendChild(toast);
+    
+    // Animate in
+    requestAnimationFrame(() => {
+        toast.classList.add('show');
+    });
+
+    // Remove after 4s
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 600);
+    }, 4000);
+}
 
 function initMobileMenu() {
     const toggle = document.querySelector('.nav-toggle');
