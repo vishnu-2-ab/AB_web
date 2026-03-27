@@ -164,15 +164,15 @@
                                     </div>
                                 </div>
                                 <div class="contact-form-wrap">
-                                    <form id="talent-form" class="contact-form glass-panel">
+                                    <form id="talent-form" class="contact-form glass-panel" action="/api/contact" method="POST">
                                         <div class="form-group">
-                                            <input type="text" placeholder="Full Name" required>
+                                            <input type="text" name="name" placeholder="Full Name" required>
                                         </div>
                                         <div class="form-group">
-                                            <input type="email" placeholder="Professional Email" required>
+                                            <input type="email" name="email" placeholder="Professional Email" required>
                                         </div>
                                         <div class="form-group">
-                                            <select class="glass-select">
+                                            <select name="expertise" class="glass-select">
                                                 <option value="" disabled selected>Area of Expertise</option>
                                                 <option value="hardware">Hardware Engineering</option>
                                                 <option value="ai">AI / ML Research</option>
@@ -181,7 +181,7 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <textarea placeholder="Briefly describe your core expertise..." rows="4"
+                                            <textarea name="brief" placeholder="Briefly describe your core expertise..." rows="4"
                                                 required></textarea>
                                         </div>
                                         <button type="submit" class="btn-premium">Submit to Talent Pool</button>

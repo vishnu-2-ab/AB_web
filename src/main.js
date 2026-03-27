@@ -9,27 +9,60 @@ document.addEventListener('DOMContentLoaded', () => {
     initCardSpotlights();
     initMobileMenu();
     initFormHandlers();
+    initSlideshows();
 });
 
 function initFormHandlers() {
     const forms = document.querySelectorAll('form');
     forms.forEach(form => {
-        form.addEventListener('submit', (e) => {
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const submitBtn = form.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
+            const action = form.getAttribute('action');
             
+            if (!action) {
+                console.warn('Form has no action attribute defined.');
+                return;
+            }
+
             // Loading state
             submitBtn.classList.add('loading');
             submitBtn.textContent = 'Transmitting...';
             
-            // Simulate API call
-            setTimeout(() => {
+            try {
+                const formData = new FormData(form);
+                const payload = Object.fromEntries(formData.entries());
+                
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    body: JSON.stringify(payload),
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    submitBtn.classList.remove('loading');
+                    submitBtn.textContent = originalText;
+                    form.reset();
+                    showToast('Transmission Successful');
+                } else {
+                    const data = await response.json();
+                    throw new Error(data.error || 'Transmission Failed');
+                }
+            } catch (err) {
+                console.error(err);
                 submitBtn.classList.remove('loading');
-                submitBtn.textContent = originalText;
-                form.reset();
-                showToast('Message Transmitted Successfully');
-            }, 1800);
+                submitBtn.textContent = 'Retry Transmission';
+                showToast(err.message || 'Transmission Error');
+                
+                // Reset button text after 3s
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                }, 3000);
+            }
         });
     });
 }
@@ -166,5 +199,38 @@ function initScrollReveal() {
             duration: 1.2,
             ease: 'power3.out'
         });
+    });
+}
+
+function initSlideshows() {
+    const slideshows = document.querySelectorAll('.product-banner.slideshow');
+    if (slideshows.length === 0) return;
+
+    slideshows.forEach(banner => {
+        const slides = Array.from(banner.querySelectorAll('.product-photo'));
+        if (slides.length <= 1) return;
+
+        let currentIndex = 0;
+        const cycleTime = parseInt(banner.dataset.interval) || 3000;
+
+        setInterval(() => {
+            const previousSlide = slides[currentIndex];
+            
+            // Current becomes exiting
+            previousSlide.classList.remove('active');
+            previousSlide.classList.add('exit');
+            
+            // Advance index
+            currentIndex = (currentIndex + 1) % slides.length;
+            
+            // New active
+            const nextSlide = slides[currentIndex];
+            nextSlide.classList.add('active');
+            
+            // Cleanup old slide after transition (800ms matches CSS)
+            setTimeout(() => {
+                previousSlide.classList.remove('exit');
+            }, 850);
+        }, cycleTime);
     });
 }
