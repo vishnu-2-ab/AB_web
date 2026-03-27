@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/src/assets/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tech Inventories | Apple and Berry Technologies</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css">
+</head>
+
+<body data-theme="dark">
+    <canvas id="global-bg"></canvas>
+    
+    <div id="smooth-wrapper">
+        <div id="smooth-content">
+            <header>
+                <nav class="navbar main-nav">
+                    <div class="container nav-container">
+                        <a href="/index.html" class="logo">
+                            <img src="/src/assets/logo.png" alt="A&B Technologies Logo">
+                            <div class="logo-text">
+                                <span>Apple and Berry</span>
+                            </div>
+                        </a>
+                        
+                        <div class="nav-right">
+                            <ul class="nav-links">
+                                <li><a href="/index.html#about">About</a></li>
+                                <li><a href="/index.html#services">Services</a></li>
+                                <li><a href="/products.html" class="active">Tech Inventories</a></li>
+                                <li><a href="/careers.html">Careers</a></li>
+                                <li class="theme-li">
+                                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                                        <span class="toggle-track">
+                                            <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" /></svg>
+                                            <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5" /><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" /></svg>
+                                            <span class="toggle-thumb"></span>
+                                        </span>
+                                    </button>
+                                </li>
+                                <li><a href="/index.html#connect" class="btn-primary-sm">Get in Touch</a></li>
+                            </ul>
+                            
+                            <button class="nav-toggle" aria-label="Toggle navigation">
+                                <span class="hamburger"></span>
+                            </button>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <main>
+                <section class="hero products-hero technical-hero" style="min-height: 40vh; padding: 160px 0 60px;">
+                    <div class="container">
+                        <div class="hero-content text-center">
+                            <div class="hero-badge reveal-up">PROPRIETARY INNOVATIONS</div>
+                            <h1 class="reveal-text">Tech <span>Inventories.</span></h1>
+                            <p class="reveal-up">Custom-engineered solutions and AI cores designed for mission-critical reliability.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="product-lineup" class="products-grid-section">
+                    <div class="container">
+                        
+                        <!-- Category 1: Medical -->
+                        <div class="category-group reveal-up">
+                            <h2 class="category-title">Clinical-Grade <span>Devices.</span></h2>
+                            <div class="products-grid">
+                                <!-- Vital Signs Monitor -->
+                                <div class="product-show-card glass-panel reveal-up">
+                                    <div class="product-banner">
+                                        <div class="vsm-mock small">
+                                            <div class="vsm-screen">
+                                                <div class="vsm-pulse"></div>
+                                            </div>
+                                        </div>
+                                        <div class="product-tag">CLINICAL</div>
+                                    </div>
+                                    <div class="product-info">
+                                        <h3>Vital Signs Monitor</h3>
+                                        <p>Comprehensive bedside monitoring platform measuring SpO2, HR, NIBP, and Temp. Designed for real-time waveform display.</p>
+                                        <ul class="tag-list">
+                                            <li>SpO2</li><li>NIBP</li><li>ECG</li><li>Temp</li><li>IEC 60601</li>
+                                        </ul>
+                                        <div class="product-footer">
+                                            <a href="/index.html#connect" class="btn-premium-sm">Request Demo</a>
+                                            <a href="/index.html#connect" class="btn-link">Specs →</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- SpO2 Module -->
+                                <div class="product-show-card glass-panel reveal-up">
+                                    <div class="product-banner masimo-viz">
+                                        <div class="wave-visual">
+                                            <div class="wave-line"></div>
+                                            <div class="wave-line"></div>
+                                        </div>
+                                        <div class="product-tag">OEM MODULE</div>
+                                    </div>
+                                    <div class="product-info">
+                                        <h3>SpO2 Module</h3>
+                                        <p>Built around Masimo SET® technology. Delivers accurate SpO2 and HR with PPG waveform output.</p>
+                                        <ul class="tag-list">
+                                            <li>Masimo SET</li><li>PPG</li><li>UART/SPI</li><li>Low Power</li>
+                                        </ul>
+                                        <div class="product-footer">
+                                            <a href="/index.html#connect" class="btn-premium-sm">Request Brief</a>
+                                            <a href="/index.html#connect" class="btn-link">Integration →</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- BP Module -->
+                                <div class="product-show-card glass-panel reveal-up">
+                                    <div class="product-banner bp-viz">
+                                        <div class="pressure-wave"></div>
+                                        <div class="product-tag">OEM MODULE</div>
+                                    </div>
+                                    <div class="product-info">
+                                        <h3>Blood Pressure Module</h3>
+                                        <p>Non-invasive NIBP measurement using oscillometric technique. Compact design for OEM integration.</p>
+                                        <ul class="tag-list">
+                                            <li>NIBP</li><li>Oscillometric</li><li>OEM Ready</li><li>AAMI SP10</li>
+                                        </ul>
+                                        <div class="product-footer">
+                                            <a href="/index.html#connect" class="btn-premium-sm">Request Brief</a>
+                                            <a href="/index.html#connect" class="btn-link">Datasheet →</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Category 2: Hardware -->
+                        <div class="category-group reveal-up" style="margin-top: 100px;">
+                            <h2 class="category-title">Precision Sensor <span>Modules.</span></h2>
+                            <div class="products-grid">
+                                <div class="product-show-card glass-panel reveal-up">
+                                    <div class="product-banner sensor-viz">
+                                        <div class="sensor-grid-viz"></div>
+                                        <div class="product-tag">PRECISION</div>
+                                    </div>
+                                    <div class="product-info">
+                                        <h3>Pressure Sensor Module</h3>
+                                        <p>High-accuracy sensing for medical/industrial use. Features I²C/SPI and onboard signal conditioning.</p>
+                                        <ul class="tag-list">
+                                            <li>I²C / SPI</li><li>High Accuracy</li><li>Conditioned</li><li>Medical Grade</li>
+                                        </ul>
+                                        <div class="product-footer">
+                                            <a href="/index.html#connect" class="btn-premium-sm">Request Quote</a>
+                                            <a href="/index.html#connect" class="btn-link">Interface Map →</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Category 3: Software -->
+                        <div class="category-group reveal-up" style="margin-top: 100px;">
+                            <h2 class="category-title">AI-Powered <span>Utilities.</span></h2>
+                            <div class="products-grid">
+                                <!-- Oasis DAS -->
+                                <div class="product-show-card glass-panel reveal-up">
+                                    <div class="product-banner oasis-viz">
+                                        <div class="agent-viz">
+                                            <div class="agent-core"></div>
+                                        </div>
+                                        <div class="product-tag">AI AGENTS</div>
+                                    </div>
+                                    <div class="product-info">
+                                        <h3>Oasis — DAS</h3>
+                                        <p>Desktop Agentic System for complex task automation. Goal-driven AI agents built for developers and teams.</p>
+                                        <ul class="tag-list">
+                                            <li>AI Agent</li><li>Automation</li><li>Desktop-Native</li><li>Goal-Driven</li>
+                                        </ul>
+                                        <div class="product-footer">
+                                            <a href="/index.html#connect" class="btn-premium-sm">Early Access</a>
+                                            <a href="/index.html#connect" class="btn-link">Learn More →</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Hercules Equivalent -->
+                                <div class="product-show-card glass-panel reveal-up">
+                                    <div class="product-banner terminal-viz">
+                                        <div class="term-screen">
+                                            <div class="term-line"></div>
+                                            <div class="term-line"></div>
+                                        </div>
+                                        <div class="product-tag">DEVELOPER TOOL</div>
+                                    </div>
+                                    <div class="product-info">
+                                        <h3>Serial/TCP Utility</h3>
+                                        <p>Modern replacement for classic Hercules utility. Enhanced with logging, scripting, and protocol analysis.</p>
+                                        <ul class="tag-list">
+                                            <li>Serial / UART</li><li>TCP / UDP</li><li>Protocol Debug</li><li>Scripting</li>
+                                        </ul>
+                                        <div class="product-footer">
+                                            <a href="/index.html#connect" class="btn-premium-sm">Download</a>
+                                            <a href="/index.html#connect" class="btn-link">Docs →</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Nexus WhatsApp -->
+                                <div class="product-show-card glass-panel reveal-up">
+                                    <div class="product-banner wa-viz">
+                                        <div class="msg-bubbles">
+                                            <div class="bubble"></div>
+                                            <div class="bubble"></div>
+                                        </div>
+                                        <div class="product-tag">AUTOMATION</div>
+                                    </div>
+                                    <div class="product-info">
+                                        <h3>Nexus WhatsApp Utility</h3>
+                                        <p>Enterprise automation for WhatsApp messaging. Webhook integration and bulk notification management.</p>
+                                        <ul class="tag-list">
+                                            <li>WhatsApp API</li><li>Automation</li><li>Bulk Msg</li><li>Webhooks</li>
+                                        </ul>
+                                        <div class="product-footer">
+                                            <a href="/index.html#connect" class="btn-premium-sm">Integrate</a>
+                                            <a href="/index.html#connect" class="btn-link">API Keys →</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+            </main>
+
+            <footer class="footer">
+                <div class="container">
+                    <div class="footer-grid">
+                        <div class="footer-brand">
+                            <a href="/index.html" class="logo">
+                                <img src="/src/assets/logo.png" alt="A&B Technologies Logo">
+                                <span>Apple and Berry</span>
+                            </a>
+                            <p>Engineering the future of compact intelligence since 2024.</p>
+                        </div>
+                        <div class="footer-links">
+                            <div class="links-col">
+                                <h4>Company</h4>
+                                <a href="/index.html#services">Services</a>
+                                <a href="/products.html">Tech Inventories</a>
+                                <a href="/careers.html">Careers</a>
+                            </div>
+                             <div class="footer-contact">
+                                <h4>Connect</h4>
+                                <p><a href="mailto:info@appleberrytech.com" style="color: inherit; text-decoration: none;">info@appleberrytech.com</a></p>
+                                <div class="social-links">
+                                    <a href="https://linkedin.com">LinkedIn</a>
+                                    <a href="https://github.com">GitHub</a>
+                                    <a href="https://twitter.com">X / Twitter</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-bottom">
+                        <p>&copy; 2026 Apple and Berry Technologies. All rights reserved.</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

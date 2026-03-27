@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/src/assets/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apple and Berry | Next-Gen AI & Embedded Systems</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css">
+</head>
+
+<body data-theme="dark">
+    <canvas id="global-bg"></canvas>
+
+    <div id="smooth-wrapper">
+        <div id="smooth-content">
+            <header>
+                <nav class="navbar main-nav">
+                    <div class="container nav-container">
+                        <a href="/" class="logo">
+                            <img src="/src/assets/logo.png" alt="A&B Technologies Logo">
+                            <div class="logo-text">
+                                <span>Apple and Berry</span>
+                            </div>
+                        </a>
+
+                        <div class="nav-right">
+                            <ul class="nav-links">
+                                <li><a href="#about">About</a></li>
+                                <li><a href="#services">Services</a></li>
+                                <li><a href="/products.html">Tech Inventories</a></li>
+                                <li><a href="/careers.html">Careers</a></li>
+                                <li class="theme-li">
+                                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                                        <span class="toggle-track">
+                                            <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2">
+                                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                                            </svg>
+                                            <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2">
+                                                <circle cx="12" cy="12" r="5" />
+                                                <path
+                                                    d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                                            </svg>
+                                            <span class="toggle-thumb"></span>
+                                        </span>
+                                    </button>
+                                </li>
+                                <li><a href="#connect" class="btn-primary-sm">Get in Touch</a></li>
+                            </ul>
+
+                            <button class="nav-toggle" aria-label="Toggle navigation">
+                                <span class="hamburger"></span>
+                            </button>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <main>
+                <section class="hero technical-hero">
+                    <div class="container hero-container">
+                        <div class="hero-content">
+                            <div class="hero-badge reveal-up">INTELLIGENCE MEETS COMPACTNESS</div>
+                            <h1 class="reveal-text">Making Machines <br><span>intelligent</span></h1>
+                            <p class="reveal-up">Forward-thinking engineering company specializing in intelligent
+                                embedded systems and AI integration.</p>
+                            <div class="hero-actions reveal-up">
+                                <a href="#services" class="btn-premium">Explore Solutions</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="about" class="about section-padding">
+                    <div class="container">
+                        <div class="about-grid">
+                            <div class="about-content reveal-up">
+                                <div class="about-badge">OUR IDENTITY</div>
+                                <h2 class="section-title">Where Intelligence <br>Meets <span>Efficiency.</span></h2>
+                                <p class="lead-text">Apple and Berry Technologies (A&B Technologies) is a
+                                    forward‑thinking engineering company specializing in embedded systems and AI
+                                    integration. We empower organizations with smart, connected systems that enhance
+                                    efficiency, decision‑making, and automation.</p>
+
+                                <div class="name-origin glass-panel">
+                                    <div class="origin-item">
+                                        <div class="origin-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <circle cx="12" cy="12" r="10"></circle>
+                                                <circle cx="12" cy="12" r="4"></circle>
+                                            </svg>
+                                        </div>
+                                        <div class="origin-text">
+                                            <strong>Apple</strong>
+                                            <span>Intelligence and AI innovation at the core of every solution.</span>
+                                        </div>
+                                    </div>
+                                    <div class="origin-item">
+                                        <div class="origin-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path
+                                                    d="M4 4h4v4H4zm8 0h4v4h-4zm8 0h4v4h-4zM4 12h4v4H4zm8 0h4v4h-4zm8 0h4v4h-4zM4 20h4v4H4zm8 0h4v4h-4zm8 0h4v4h-4z">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <div class="origin-text">
+                                            <strong>Berry</strong>
+                                            <span>Compactness, adaptability, and high-performance embedded
+                                                efficiency.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="pillar-grid reveal-up">
+                                <div class="pillar-card glass-panel">
+                                    <div class="pillar-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <path d="M12 8v8m-4-4h8"></path>
+                                        </svg>
+                                    </div>
+                                    <h4>Mission-Driven Engineering</h4>
+                                    <p>Delivering smart, embedded, AI-integrated systems across healthcare and IT
+                                        industries.</p>
+                                </div>
+                                <div class="pillar-card glass-panel">
+                                    <div class="pillar-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                                        </svg>
+                                    </div>
+                                    <h4>AI-First Development</h4>
+                                    <p>Every product is built with AI-augmented workflows and intelligent decision
+                                        support.</p>
+                                </div>
+                                <div class="pillar-card glass-panel">
+                                    <div class="pillar-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                        </svg>
+                                    </div>
+                                    <h4>Veteran-Led Team</h4>
+                                    <p>Decades of experience in IT, embedded systems, and medical device development.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="services" class="services">
+                    <div class="container">
+                        <div class="section-header reveal-up text-center">
+                            <h2 class="section-title">Engineering Pillars</h2>
+                            <p class="section-subtitle">Bridging the gap between intelligent software and custom
+                                hardware.</p>
+                        </div>
+                        <div class="service-grid">
+                            <!-- Service 1: Medical Device Development -->
+                            <div class="service-item glass-panel reveal-up">
+                                <div class="item-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path
+                                            d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <div class="num">01</div>
+                                <h3>Medical Device Development</h3>
+                                <p>End-to-end design of regulatory-compliant diagnostics and monitoring systems. IEC
+                                    60601 & ISO 13485 ready.</p>
+                            </div>
+
+                            <!-- Service 2: Embedded System Design -->
+                            <div class="service-item glass-panel reveal-up">
+                                <div class="item-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                        <path d="M7 3v4M17 3v4M3 7h4M3 17h4M7 21v-4M17 21v-4M21 17h-4M21 7h-4"></path>
+                                        <path d="M12 8v8M8 12h8"></path>
+                                    </svg>
+                                </div>
+                                <div class="num">02</div>
+                                <h3>Embedded System Design</h3>
+                                <p>Custom hardware and firmware — from schematic to production. PCB design and Real-time
+                                    OS integration.</p>
+                            </div>
+
+                            <!-- Service 3: AI Application Integration -->
+                            <div class="service-item glass-panel reveal-up">
+                                <div class="item-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Z"></path>
+                                        <path d="M12 8a4 4 0 1 0 4 4 4 4 0 0 0-4-4Z"></path>
+                                        <path d="M12 4v2M12 18v2M4 12h2M18 12h2"></path>
+                                    </svg>
+                                </div>
+                                <div class="num">03</div>
+                                <h3>AI Application Integration</h3>
+                                <p>Seamless ML and LLM intelligence into embedded platforms for real-time edge
+                                    processing and decisions.</p>
+                            </div>
+
+                            <!-- Service 4: IoT & Connectivity -->
+                            <div class="service-item glass-panel reveal-up">
+                                <div class="item-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M5 12h14M12 5v14M12 5l-7 7 7 7"></path>
+                                        <circle cx="12" cy="12" r="9"></circle>
+                                    </svg>
+                                </div>
+                                <div class="num">04</div>
+                                <h3>IoT & Connectivity</h3>
+                                <p>Smart solutions with WiFi, BLE, LoRa, and cellular. From edge nodes to
+                                    cloud-integrated architectures.</p>
+                            </div>
+
+                            <!-- Service 5: Signal Processing -->
+                            <div class="service-item glass-panel reveal-up">
+                                <div class="item-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M2 12s4-8 10-8s10 8 10 8s-4 8-10 8s-10-8-10-8Z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                </div>
+                                <div class="num">05</div>
+                                <h3>Signal Processing & Analytics</h3>
+                                <p>Advanced biomedical signal analysis — SpO2, PPG, ECG — with FFT and artifact removal
+                                    pipelines.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="innovation" class="innovation">
+                    <div class="container">
+                        <div class="section-header reveal-up">
+                            <h2 class="section-title">Innovation <span>Lab.</span></h2>
+                            <p class="section-subtitle">Our iterative R&D cycle for precision-engineered solutions.</p>
+                        </div>
+                        <div class="process-grid">
+                            <div class="process-step reveal-up">
+                                <div class="step-num">01</div>
+                                <h4>Deep Research</h4>
+                                <p>Analyzing complex requirements and identifying core engineering challenges.</p>
+                            </div>
+                            <div class="process-step reveal-up">
+                                <div class="step-num">02</div>
+                                <h4>Prototyping</h4>
+                                <p>Rapid hardware iterations and edge-AI model training on custom silicon.</p>
+                            </div>
+                            <div class="process-step reveal-up">
+                                <div class="step-num">03</div>
+                                <h4>Deployment</h4>
+                                <p>Seamless integration and field testing in mission-critical environments.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="customer-projects" class="customer-projects">
+                    <div class="container">
+                        <div class="section-header reveal-up">
+                            <h2 class="section-title">Customer <span>Projects.</span></h2>
+                            <p class="section-subtitle">Real-world products delivered to our customers — from concept to
+                                clinical deployment.</p>
+                        </div>
+
+                        <div class="project-spotlight reveal-up">
+                            <div class="project-card glass-panel wide-card">
+                                <div class="project-visual-gallery">
+                                    <div class="main-project-img">
+                                        <img src="/public/monitor/Whisk_a44861655db18de928c407e1e33de73adr.png"
+                                            alt="Patient Monitor System">
+                                    </div>
+                                    <div class="secondary-project-img">
+                                        <img src="/public/monitor/Whisk_bedede4109e6dae8f364aff85bacc79edr.png"
+                                            alt="Patient Monitor Side View">
+                                    </div>
+                                </div>
+
+                                <div class="project-details">
+                                    <div class="project-type">Medical Device Project</div>
+                                    <h3>Patient Monitor</h3>
+                                    <p>A compact, high-resolution 10-inch patient monitoring system designed for bedside
+                                        use. Displays multi-parameter vitals with real-time waveforms, alarm management,
+                                        and trend analysis — built on a Pi-based platform with a custom clinical UI.</p>
+
+                                    <div class="project-specs-grid">
+                                        <div class="spec-item">
+                                            <div class="spec-label">Pulse Rate (PR)</div>
+                                            <div class="spec-value">Real-time BPM with waveform</div>
+                                        </div>
+                                        <div class="spec-item">
+                                            <div class="spec-label">SpO2</div>
+                                            <div class="spec-value">Masimo SET® pulse oximetry</div>
+                                        </div>
+                                        <div class="spec-item">
+                                            <div class="spec-label">Respiratory Rate (RR)</div>
+                                            <div class="spec-value">Continuous monitoring & alerts</div>
+                                        </div>
+                                        <div class="spec-item">
+                                            <div class="spec-label">Movement Detection</div>
+                                            <div class="spec-value">Piezoelectric motion sensing</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="project-tags">
+                                        <span>Trend Analysis</span>
+                                        <span>Alarm Management</span>
+                                        <span>10" Touchscreen</span>
+                                        <span>Custom Clinical UI</span>
+                                        <span>Pi Platform</span>
+                                    </div>
+
+                                    <div class="project-footer">
+                                        <a href="/products.html" class="btn-premium-sm">Project Details</a>
+                                        <a href="#connect" class="btn-link">Case Study →</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+
+                <section id="connect" class="connect">
+                    <div class="container">
+                        <div class="contact-grid">
+                            <div class="contact-info reveal-up">
+                                <h2 class="section-title">Let's <span>Connect.</span></h2>
+                                <p>Ready to bring intelligence to your next hardware project? Our engineers are standing
+                                    by.
+                                </p>
+                                <div class="contact-details">
+                                    <div class="detail-item">
+                                        <span>OFFICE</span>
+                                        <strong>Thiruvananthapuram, Kerala</strong>
+                                    </div>
+                                    <div class="detail-item">
+                                         <span>EMAIL</span>
+                                         <strong><a href="mailto:info@appleberrytech.com" style="color: inherit; text-decoration: none;">info@appleberrytech.com</a></strong>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contact-form-wrap reveal-up">
+                                <form class="contact-form glass-panel">
+                                    <div class="form-group">
+                                        <input type="text" placeholder="Full Name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" placeholder="Email Address" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea placeholder="Project Brief" rows="4" required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn-premium">Transmit Request</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <footer class="footer">
+                <div class="container">
+                    <div class="footer-grid">
+                        <div class="footer-brand">
+                            <a href="/" class="logo">
+                                <img src="/src/assets/logo.png" alt="A&B Technologies Logo">
+                                <span>Apple and Berry</span>
+                            </a>
+                            <p>Engineering the future of compact intelligence since 2024.</p>
+                        </div>
+                        <div class="footer-links">
+                            <div class="links-col">
+                                <h4>Company</h4>
+                                <a href="/index.html#services">Services</a>
+                                <a href="/products.html">Tech Inventories</a>
+                                <a href="/careers.html">Careers</a>
+                            </div>
+                            <div class="footer-contact">
+                            <h4>Connect</h4>
+                            <p><a href="mailto:info@appleberrytech.com" style="color: inherit; text-decoration: none;">info@appleberrytech.com</a></p>
+                            <div class="social-links">
+                                <a href="https://github.com">GitHub</a>
+                                <a href="https://twitter.com">X / Twitter</a>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="footer-bottom">
+                        <p>&copy; 2026 Apple and Berry Technologies. All rights reserved.</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
