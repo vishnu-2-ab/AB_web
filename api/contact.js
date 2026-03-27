@@ -38,6 +38,8 @@ export default async function handler(req, res) {
         return res.status(200).json({ success: true, data });
     } catch (error) {
         console.error('Submission Error:', error);
-        return res.status(500).json({ error: error.message });
+        // Ensure we send a string message, even if error is complex
+        const message = typeof error === 'string' ? error : (error.message || 'Internal Server Error');
+        return res.status(500).json({ error: message });
     }
 }

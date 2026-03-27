@@ -592,15 +592,16 @@ section { padding: 140px 0; border-top: 1px solid var(--glass-border); position:
 
 .toast.show { transform: translateX(0); }
 
+.toast.success .toast-icon { background: var(--primary); color: #000; }
+.toast.error .toast-icon { background: #ff4d4d; color: #fff; }
+
 .toast-icon {
   width: 20px;
   height: 20px;
-  background: var(--primary);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #000;
   font-size: 12px;
   font-weight: 800;
 }

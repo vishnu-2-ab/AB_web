@@ -47,18 +47,19 @@ function initFormHandlers() {
                     submitBtn.classList.remove('loading');
                     submitBtn.textContent = originalText;
                     form.reset();
-                    showToast('Transmission Successful');
+                    showToast('Transmission Successful', 'success');
                 } else {
                     const data = await response.json();
-                    throw new Error(data.error || 'Transmission Failed');
+                    // Handle both {error: "msg"} and {message: "msg"} formats
+                    const errorMsg = data.error || data.message || 'Transmission Failed';
+                    throw new Error(typeof errorMsg === 'string' ? errorMsg : JSON.stringify(errorMsg));
                 }
             } catch (err) {
-                console.error(err);
+                console.error('Front-end Error:', err);
                 submitBtn.classList.remove('loading');
                 submitBtn.textContent = 'Retry Transmission';
-                showToast(err.message || 'Transmission Error');
+                showToast(err.message || 'An unexpected error occurred', 'error');
                 
-                // Reset button text after 3s
                 setTimeout(() => {
                     submitBtn.textContent = originalText;
                 }, 3000);
@@ -67,7 +68,7 @@ function initFormHandlers() {
     });
 }
 
-function showToast(message) {
+function showToast(message, type = 'success') {
     let container = document.querySelector('.toast-container');
     if (!container) {
         container = document.createElement('div');
@@ -76,10 +77,10 @@ function showToast(message) {
     }
 
     const toast = document.createElement('div');
-    toast.className = 'toast';
+    toast.className = `toast ${type}`;
     toast.innerHTML = `
-        <div class="toast-icon">✓</div>
-        <span>${message}</span>
+        <div class="toast-icon">${type === 'success' ? '✓' : '✕'}</div>
+        <span>${String(message)}</span>
     `;
 
     container.appendChild(toast);
