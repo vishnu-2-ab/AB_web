@@ -379,7 +379,8 @@ section { padding: 140px 0; border-top: 1px solid var(--glass-border); position:
 
 /* Footer Final */
 .footer { padding: 100px 0 60px; border-top: 1px solid var(--glass-border); background: #000; }
-.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 80px; margin-bottom: 80px; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 80px; margin-bottom: 80px; align-items: flex-start; }
+.footer-brand { display: flex; flex-direction: column; align-items: flex-start; text-align: left; }
 .footer-brand p { color: var(--text-dim); margin-top: 20px; max-width: 300px; line-height: 1.6; }
 .footer-links { display: flex; gap: 80px; }
 .links-col h4 { font-size: 0.9rem; color: var(--text); margin-bottom: 24px; text-transform: uppercase; letter-spacing: 0.1em; }
@@ -471,8 +472,9 @@ section { padding: 140px 0; border-top: 1px solid var(--glass-border); position:
   .process-grid { grid-template-columns: 1fr; }
   .project-card { grid-template-columns: 1fr; padding: 40px; }
   .contact-grid { grid-template-columns: 1fr; gap: 60px; }
-  .footer-grid { grid-template-columns: 1fr; gap: 60px; }
-  .footer-links { flex-direction: column; gap: 40px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 60px; text-align: left; align-items: flex-start; }
+  .footer-links { flex-direction: column; gap: 40px; align-items: flex-start; }
+  .footer-bottom { text-align: left; }
 }
 
 /* Force Dark Theme for Footer Section ONLY */
