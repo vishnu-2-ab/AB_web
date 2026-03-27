@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
     initFormHandlers();
     initSlideshows();
+    initSmoothScroll();
 });
 
 function initFormHandlers() {
@@ -150,9 +151,6 @@ function initThemeToggle() {
     const root = document.documentElement;
     if (!toggleBtn) return;
 
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    root.setAttribute('data-theme', savedTheme);
-
     toggleBtn.addEventListener('click', () => {
         const currentTheme = root.getAttribute('data-theme');
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
@@ -169,19 +167,18 @@ function initHeroAnimations() {
     });
 
     if (document.querySelector('.reveal-text')) {
-        tl.from('.reveal-text', {
-            y: 80,
-            opacity: 0,
-            stagger: 0.1
-        });
+        tl.fromTo('.reveal-text', 
+            { y: 80, opacity: 0 },
+            { y: 0, opacity: 1, stagger: 0.1 }
+        );
     }
 
     if (document.querySelector('.hero-content .reveal-up')) {
-        tl.from('.hero-content .reveal-up', {
-            y: 30,
-            opacity: 0,
-            stagger: 0.1
-        }, '-=1.2');
+        tl.fromTo('.hero-content .reveal-up',
+            { y: 30, opacity: 0 },
+            { y: 0, opacity: 1, stagger: 0.1 },
+            '-=1.2'
+        );
     }
 }
 
@@ -189,17 +186,20 @@ function initScrollReveal() {
     if (typeof gsap === 'undefined') return;
 
     gsap.utils.toArray('.reveal-up').forEach(el => {
-        gsap.from(el, {
-            scrollTrigger: {
-                trigger: el,
-                start: 'top 92%',
-                toggleActions: 'play none none none'
-            },
-            y: 40,
-            opacity: 0,
-            duration: 1.2,
-            ease: 'power3.out'
-        });
+        gsap.fromTo(el, 
+            { y: 40, opacity: 0 },
+            {
+                scrollTrigger: {
+                    trigger: el,
+                    start: 'top 92%',
+                    toggleActions: 'play none none none'
+                },
+                y: 0,
+                opacity: 1,
+                duration: 1.2,
+                ease: 'power3.out'
+            }
+        );
     });
 }
 
@@ -233,5 +233,20 @@ function initSlideshows() {
                 previousSlide.classList.remove('exit');
             }, 850);
         }, cycleTime);
+    });
+}
+function initSmoothScroll() {
+    // 1. Handle in-page navigation
+    const navLinks = document.querySelectorAll('a[href^="#"]');
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const targetId = link.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const target = document.querySelector(targetId);
+            if (target) {
+                // Let CSS scroll-behavior: smooth handle it
+            }
+        });
     });
 }

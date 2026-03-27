@@ -1,3 +1,8 @@
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-height);
+}
+
 :root {
   --bg: #030303;
   --text: #ffffff;
@@ -87,7 +92,7 @@ body { background-color: var(--bg); color: var(--text); font-family: 'Inter', sa
 .btn-link { color: var(--text-dim); text-decoration: none; font-weight: 500; font-size: 0.95rem; }
 
 /* Sections */
-section { padding: 140px 0; border-top: 1px solid var(--glass-border); position: relative; opacity: 1 !important; }
+section { padding: 140px 0; border-top: 1px solid var(--glass-border); position: relative; }
 .section-title { font-family: var(--font-heading); font-size: 3.5rem; font-weight: 800; margin-bottom: 20px; }
 .service-grid {
   display: grid;
@@ -256,8 +261,10 @@ section { padding: 140px 0; border-top: 1px solid var(--glass-border); position:
 .btn-premium-sm { 
   padding: 12px 20px; font-size: 0.8rem; background: var(--primary); color: #000; 
   border-radius: 8px; font-weight: 700; transition: 0.3s;
+  animation: btn-pulse 3s infinite ease-in-out;
+  box-shadow: 0 0 15px var(--primary-glow);
 }
-.btn-premium-sm:hover { opacity: 0.9; transform: scale(0.98); }
+.btn-premium-sm:hover { opacity: 0.9; transform: scale(1.02); box-shadow: 0 0 30px var(--primary-glow); }
 
 /* Product Visuals */
 .ai-core-viz { background: radial-gradient(circle at center, rgba(141, 198, 63, 0.1) 0%, transparent 70%); }
@@ -632,4 +639,39 @@ section { padding: 140px 0; border-top: 1px solid var(--glass-border); position:
   animation: btn-spin 0.8s linear infinite;
 }
 
-@keyframes btn-spin { to { transform: rotate(360deg); } }
+@keyframes btn-spin { to { transform: rotate(360deg); } }
+
+.project-footer {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.btn-more {
+  padding: 8px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  animation: btn-pulse 3s infinite ease-in-out 1.5s;
+}
+
+.btn-more:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: rgba(141, 198, 63, 0.05);
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px var(--primary-glow);
+}
+
+@keyframes btn-pulse {
+  0% { box-shadow: 0 0 5px var(--primary-glow); }
+  50% { box-shadow: 0 0 20px var(--primary-glow); }
+  100% { box-shadow: 0 0 5px var(--primary-glow); }
+}

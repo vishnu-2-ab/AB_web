@@ -12,9 +12,15 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;600;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="/src/style.css">
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
 </head>
 
-<body data-theme="dark">
+<body>
     <canvas id="global-bg"></canvas>
 
     <div id="smooth-wrapper">
@@ -321,6 +327,7 @@
                                     <div class="project-footer">
                                         <a href="/products.html" class="btn-premium-sm">Project Details</a>
                                         <a href="#connect" class="btn-link">Case Study →</a>
+                                        <a href="/products.html" class="btn-more">More Projects →</a>
                                     </div>
                                 </div>
                             </div>
