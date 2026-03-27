@@ -31,7 +31,7 @@ export default async function handler(req, res) {
 
         const data = await resend.emails.send({
             from: 'Apple and Berry <onboarding@resend.dev>',
-            to: ['info@appleberrytech.com'],
+            to: ['vishnu.v@appleberrytech.info'],
             subject: subject,
             reply_to: email,
             html: `
