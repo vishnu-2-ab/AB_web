@@ -3,38 +3,74 @@ import { initHeroCanvas } from './heroCanvas.js'
 document.addEventListener('DOMContentLoaded', () => {
     initHeroCanvas();
     initHeroAnimations();
+    initInventorySlider();
     initThemeToggle();
     initScrollReveal();
     initMouseTracking();
     initCardSpotlights();
     initMobileMenu();
     initFormHandlers();
+    initSlideshows();
+    initSmoothScroll();
 });
 
 function initFormHandlers() {
     const forms = document.querySelectorAll('form');
     forms.forEach(form => {
-        form.addEventListener('submit', (e) => {
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const submitBtn = form.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
+            const action = form.getAttribute('action');
             
+            if (!action) {
+                console.warn('Form has no action attribute defined.');
+                return;
+            }
+
             // Loading state
             submitBtn.classList.add('loading');
             submitBtn.textContent = 'Transmitting...';
             
-            // Simulate API call
-            setTimeout(() => {
+            try {
+                const formData = new FormData(form);
+                const payload = Object.fromEntries(formData.entries());
+                
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    body: JSON.stringify(payload),
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    submitBtn.classList.remove('loading');
+                    submitBtn.textContent = originalText;
+                    form.reset();
+                    showToast('Transmission Successful', 'success');
+                } else {
+                    const data = await response.json();
+                    // Handle both {error: "msg"} and {message: "msg"} formats
+                    const errorMsg = data.error || data.message || 'Transmission Failed';
+                    throw new Error(typeof errorMsg === 'string' ? errorMsg : JSON.stringify(errorMsg));
+                }
+            } catch (err) {
+                console.error('Front-end Error:', err);
                 submitBtn.classList.remove('loading');
-                submitBtn.textContent = originalText;
-                form.reset();
-                showToast('Message Transmitted Successfully');
-            }, 1800);
+                submitBtn.textContent = 'Retry Transmission';
+                showToast(err.message || 'An unexpected error occurred', 'error');
+                
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                }, 3000);
+            }
         });
     });
 }
 
-function showToast(message) {
+function showToast(message, type = 'success') {
     let container = document.querySelector('.toast-container');
     if (!container) {
         container = document.createElement('div');
@@ -43,10 +79,10 @@ function showToast(message) {
     }
 
     const toast = document.createElement('div');
-    toast.className = 'toast';
+    toast.className = `toast ${type}`;
     toast.innerHTML = `
-        <div class="toast-icon">✓</div>
-        <span>${message}</span>
+        <div class="toast-icon">${type === 'success' ? '✓' : '✕'}</div>
+        <span>${String(message)}</span>
     `;
 
     container.appendChild(toast);
@@ -116,9 +152,6 @@ function initThemeToggle() {
     const root = document.documentElement;
     if (!toggleBtn) return;
 
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    root.setAttribute('data-theme', savedTheme);
-
     toggleBtn.addEventListener('click', () => {
         const currentTheme = root.getAttribute('data-theme');
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
@@ -135,19 +168,18 @@ function initHeroAnimations() {
     });
 
     if (document.querySelector('.reveal-text')) {
-        tl.from('.reveal-text', {
-            y: 80,
-            opacity: 0,
-            stagger: 0.1
-        });
+        tl.fromTo('.reveal-text', 
+            { y: 80, opacity: 0 },
+            { y: 0, opacity: 1, stagger: 0.1 }
+        );
     }
 
     if (document.querySelector('.hero-content .reveal-up')) {
-        tl.from('.hero-content .reveal-up', {
-            y: 30,
-            opacity: 0,
-            stagger: 0.1
-        }, '-=1.2');
+        tl.fromTo('.hero-content .reveal-up',
+            { y: 30, opacity: 0 },
+            { y: 0, opacity: 1, stagger: 0.1 },
+            '-=1.2'
+        );
     }
 }
 
@@ -155,16 +187,131 @@ function initScrollReveal() {
     if (typeof gsap === 'undefined') return;
 
     gsap.utils.toArray('.reveal-up').forEach(el => {
-        gsap.from(el, {
-            scrollTrigger: {
-                trigger: el,
-                start: 'top 92%',
-                toggleActions: 'play none none none'
-            },
-            y: 40,
-            opacity: 0,
-            duration: 1.2,
-            ease: 'power3.out'
+        gsap.fromTo(el, 
+            { y: 40, opacity: 0 },
+            {
+                scrollTrigger: {
+                    trigger: el,
+                    start: 'top 92%',
+                    toggleActions: 'play none none none'
+                },
+                y: 0,
+                opacity: 1,
+                duration: 1.2,
+                ease: 'power3.out'
+            }
+        );
+    });
+}
+
+function initSlideshows() {
+    const slideshows = document.querySelectorAll('.product-banner.slideshow');
+    if (slideshows.length === 0) return;
+
+    slideshows.forEach(banner => {
+        const slides = Array.from(banner.querySelectorAll('.product-photo'));
+        if (slides.length <= 1) return;
+
+        let currentIndex = 0;
+        const cycleTime = parseInt(banner.dataset.interval) || 3000;
+
+        setInterval(() => {
+            const previousSlide = slides[currentIndex];
+            
+            // Current becomes exiting
+            previousSlide.classList.remove('active');
+            previousSlide.classList.add('exit');
+            
+            // Advance index
+            currentIndex = (currentIndex + 1) % slides.length;
+            
+            // New active
+            const nextSlide = slides[currentIndex];
+            nextSlide.classList.add('active');
+            
+            // Cleanup old slide after transition (800ms matches CSS)
+            setTimeout(() => {
+                previousSlide.classList.remove('exit');
+            }, 850);
+        }, cycleTime);
+    });
+}
+function initInventorySlider() {
+    console.log("Initializing Inventory Slider...");
+    const slider = document.getElementById('inventory-hero');
+    if (!slider) {
+        console.warn("Inventory Slider element not found!");
+        return;
+    }
+
+    const slides = slider.querySelectorAll('.inventory-slide');
+    const dots = slider.querySelectorAll('.nav-dot');
+    let currentIndex = 0;
+    const duration = 6000; // 6 seconds per slide
+    let timer;
+    let progressTween;
+
+    function goToSlide(index) {
+        if (index === currentIndex) return;
+
+        // Reset previous state
+        slides[currentIndex].classList.remove('active');
+        dots[currentIndex].classList.remove('active');
+        
+        // Kill existing progress animation
+        if (progressTween) progressTween.kill();
+        gsap.set(dots[currentIndex].querySelector('.dot-progress'), { width: 0 });
+
+        // Update index
+        currentIndex = index;
+
+        // Set new active
+        slides[currentIndex].classList.add('active');
+        dots[currentIndex].classList.add('active');
+
+        // Start new progress animation
+        startTimer();
+    }
+
+    function nextSlide() {
+        let nextIndex = (currentIndex + 1) % slides.length;
+        goToSlide(nextIndex);
+    }
+
+    function startTimer() {
+        // Progress bar animation
+        const activeDot = dots[currentIndex];
+        const progressBar = activeDot.querySelector('.dot-progress');
+        
+        progressTween = gsap.fromTo(progressBar, 
+            { width: '0%' }, 
+            { width: '100%', duration: duration / 1000, ease: 'none', onComplete: nextSlide }
+        );
+    }
+
+    // Dot click events
+    dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+            goToSlide(i);
+        });
+    });
+
+    // Start initial timer
+    startTimer();
+}
+
+function initSmoothScroll() {
+    // 1. Handle in-page navigation
+    const navLinks = document.querySelectorAll('a[href^="#"]');
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const targetId = link.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const target = document.querySelector(targetId);
+            if (target) {
+                // Let CSS scroll-behavior: smooth handle it
+            }
         });
     });
 }
