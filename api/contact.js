@@ -16,7 +16,7 @@ export default async function handler(req, res) {
         }
 
         const resend = new Resend(apiKey);
-        const { name, email, message, expertise, brief } = req.body;
+        const { name, email, message, expertise, brief, resumeName, resumeBase64 } = req.body;
 
         if (!name || !email || (!message && !brief)) {
             return res.status(400).json({ error: 'Missing required fields.' });
@@ -29,7 +29,7 @@ export default async function handler(req, res) {
             ? `New Talent Application: ${name}`
             : `New Contact Inquiry: ${name}`;
 
-        const data = await resend.emails.send({
+        let emailPayload = {
             from: 'Apple and Berry <onboarding@resend.dev>',
             to: ['vishnu.v@appleberrytech.info'],
             subject: subject,
@@ -50,7 +50,19 @@ export default async function handler(req, res) {
                     </p>
                 </div>
             `,
-        });
+        };
+
+        if (resumeBase64 && resumeName) {
+            const base64Content = resumeBase64.split(',')[1] || resumeBase64;
+            emailPayload.attachments = [
+                {
+                    filename: resumeName,
+                    content: base64Content,
+                }
+            ];
+        }
+
+        const data = await resend.emails.send(emailPayload);
 
         console.log('Email sent successfully:', data.id);
         return res.status(200).json({ success: true, id: data.id });

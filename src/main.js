@@ -36,7 +36,32 @@ function initFormHandlers() {
                 const formData = new FormData(form);
                 const payload = Object.fromEntries(formData.entries());
                 
-                const response = await fetch('/api/contact', {
+                // If this form has a file (like resume upload), convert it to Base64
+                if (form.getAttribute('enctype') === 'multipart/form-data') {
+                    const fileInput = form.querySelector('input[type="file"]');
+                    if (fileInput && fileInput.files.length > 0) {
+                        const file = fileInput.files[0];
+                        
+                        const base64 = await new Promise((resolve, reject) => {
+                            const reader = new FileReader();
+                            reader.readAsDataURL(file);
+                            reader.onload = () => resolve(reader.result);
+                            reader.onerror = error => reject(error);
+                        });
+
+                        payload.resumeName = file.name;
+                        payload.resumeBase64 = base64;
+                    }
+                }
+
+                // Ensure file object itself isn't in payload breaking JSON stringify
+                for (let key in payload) {
+                    if (payload[key] instanceof File) {
+                        delete payload[key];
+                    }
+                }
+
+                const response = await fetch(action, {
                     method: 'POST',
                     body: JSON.stringify(payload),
                     headers: {
