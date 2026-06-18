@@ -5,7 +5,24 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/src/assets/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vital Signs Monitor | 7" Multi-Parameter Clinical Display</title>
+    <title>Vital Signs Monitor | Apple and Berry</title>
+    <meta name="description" content="Comprehensive bedside monitoring platform with real-time waveform display and clinical-grade accuracy." />
+    <meta name="keywords" content="embedded systems, medical device manufacturing, AI integration, IoT, vital signs monitor, Apple and Berry Technologies" />
+    <link rel="canonical" href="https://www.appleberrytech.info/vsm-details" />
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.appleberrytech.info/vsm-details" />
+    <meta property="og:title" content="Vital Signs Monitor | Apple and Berry" />
+    <meta property="og:description" content="Comprehensive bedside monitoring platform with real-time waveform display and clinical-grade accuracy." />
+    <meta property="og:image" content="https://www.appleberrytech.info/src/assets/logo.png" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://www.appleberrytech.info/vsm-details" />
+    <meta name="twitter:title" content="Vital Signs Monitor | Apple and Berry" />
+    <meta name="twitter:description" content="Comprehensive bedside monitoring platform with real-time waveform display and clinical-grade accuracy." />
+    <meta name="twitter:image" content="https://www.appleberrytech.info/src/assets/logo.png" />
     <meta name="description"
         content="Discover the AppleBerry Vital Signs Monitor featuring proprietary fast NIBP, integrated Excergen forehead scanning, and advanced patient deterioration alerts. Built for continuous adult care with Wi-Fi network connectivity.">
     <meta name="keywords"
@@ -17,11 +34,12 @@
         rel="stylesheet">
     <link rel="stylesheet" href="/src/style.css">
     <script>
-        (function () {
-            const savedTheme = localStorage.getItem('theme') || 'dark';
-            document.documentElement.setAttribute('data-theme', savedTheme);
-        })();
-    </script>
+    (function () {
+      const savedTheme = localStorage.getItem('theme');
+      const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', savedTheme || (systemDark ? 'dark' : 'light'));
+    })();
+  </script>
     <style>
         .vsm-hero {
             padding: 160px 0 100px;
@@ -100,6 +118,16 @@
             }
         }
     </style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TNNCNFFV6K"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-TNNCNFFV6K');
+    </script>
 </head>
 
 <body>

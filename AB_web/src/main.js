@@ -1,5 +1,9 @@
 import { initHeroCanvas } from './heroCanvas.js'
+import { inject } from '@vercel/analytics';
+import { injectSpeedInsights } from '@vercel/speed-insights';
 
+inject();
+injectSpeedInsights();
 document.addEventListener('DOMContentLoaded', () => {
     initHeroCanvas();
     initHeroAnimations();
@@ -175,6 +179,15 @@ function initMouseTracking() {
 function initThemeToggle() {
     const toggleBtn = document.getElementById('theme-toggle');
     const root = document.documentElement;
+
+    // Listen for system theme changes dynamically
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        if (!localStorage.getItem('theme')) {
+            const newTheme = e.matches ? 'dark' : 'light';
+            root.setAttribute('data-theme', newTheme);
+        }
+    });
+
     if (!toggleBtn) return;
 
     toggleBtn.addEventListener('click', () => {

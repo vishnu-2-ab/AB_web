@@ -201,7 +201,7 @@ body { background-color: var(--bg); color: var(--text); font-family: 'Inter', sa
 .slide-content h2 span { color: var(--primary); }
 
 .slide-content p {
-  color: var(--text-dim);
+  color: rgba(255, 255, 255, 0.7);
   font-size: 1.1rem;
   line-height: 1.6;
   max-width: 500px;
@@ -218,6 +218,13 @@ body { background-color: var(--bg); color: var(--text); font-family: 'Inter', sa
   opacity: 0;
   transform: translateY(30px);
   transition: 0.8s 0.5s ease;
+}
+
+.inventory-slider .btn-link {
+  color: rgba(255, 255, 255, 0.7);
+}
+.inventory-slider .btn-link:hover {
+  color: #fff;
 }
 
 .inventory-slide.active .slide-badge,
@@ -489,9 +496,27 @@ section { padding: 140px 0; border-top: 1px solid var(--glass-border); position:
 .sensor-grid-viz { width: 60px; height: 60px; border: 1px solid var(--text-dim); background: repeating-linear-gradient(0deg, transparent 0 10px, rgba(255,255,255,0.05) 10px 11px); }
 
 .oasis-viz { background: var(--bg-obsidian); }
-.agent-viz { width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; position: relative; }
-.agent-core { width: 30px; height: 30px; background: var(--primary); border-radius: 4px; transform: rotate(45deg); animation: agent-spin 10s infinite linear; }
-@keyframes agent-spin { from { transform: rotate(45deg); } to { transform: rotate(405deg); } }
+.oasis-logo-wrapper {
+  width: 140px;
+  height: 140px;
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.1);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+.oasis-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.product-show-card:hover .oasis-logo-wrapper {
+  transform: scale(1.08) rotate(2deg);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 0 1px var(--primary);
+}
 
 .terminal-viz { background: #000; }
 .term-screen { width: 120px; height: 80px; border: 1px solid #333; padding: 10px; font-family: monospace; font-size: 8px; overflow: hidden; }

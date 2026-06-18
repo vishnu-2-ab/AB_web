@@ -5,7 +5,24 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/src/assets/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Careers | Apple and Berry Technologies</title>
+    <title>Careers | Apple and Berry</title>
+    <meta name="description" content="Join Apple and Berry Technologies. We are hiring engineers passionate about embedded systems, IoT, and AI application integration." />
+    <meta name="keywords" content="embedded systems, medical device manufacturing, AI integration, IoT, vital signs monitor, Apple and Berry Technologies" />
+    <link rel="canonical" href="https://www.appleberrytech.info/careers" />
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.appleberrytech.info/careers" />
+    <meta property="og:title" content="Careers | Apple and Berry" />
+    <meta property="og:description" content="Join Apple and Berry Technologies. We are hiring engineers passionate about embedded systems, IoT, and AI application integration." />
+    <meta property="og:image" content="https://www.appleberrytech.info/src/assets/logo.png" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://www.appleberrytech.info/careers" />
+    <meta name="twitter:title" content="Careers | Apple and Berry" />
+    <meta name="twitter:description" content="Join Apple and Berry Technologies. We are hiring engineers passionate about embedded systems, IoT, and AI application integration." />
+    <meta name="twitter:image" content="https://www.appleberrytech.info/src/assets/logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -13,10 +30,21 @@
         rel="stylesheet">
     <link rel="stylesheet" href="/src/style.css">
     <script>
-        (function () {
-            const savedTheme = localStorage.getItem('theme') || 'dark';
-            document.documentElement.setAttribute('data-theme', savedTheme);
-        })();
+    (function () {
+      const savedTheme = localStorage.getItem('theme');
+      const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', savedTheme || (systemDark ? 'dark' : 'light'));
+    })();
+  </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TNNCNFFV6K"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-TNNCNFFV6K');
     </script>
 </head>
 

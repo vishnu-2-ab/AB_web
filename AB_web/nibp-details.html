@@ -5,18 +5,36 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/src/assets/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OEM Blood Pressure Module | Apple and Berry Technologies</title>
+    <title>NIBP Module | Apple and Berry</title>
+    <meta name="description" content="Compact non-invasive blood pressure measurement core designed for seamless medical device integration." />
+    <meta name="keywords" content="embedded systems, medical device manufacturing, AI integration, IoT, vital signs monitor, Apple and Berry Technologies" />
+    <link rel="canonical" href="https://www.appleberrytech.info/nibp-details" />
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.appleberrytech.info/nibp-details" />
+    <meta property="og:title" content="NIBP Module | Apple and Berry" />
+    <meta property="og:description" content="Compact non-invasive blood pressure measurement core designed for seamless medical device integration." />
+    <meta property="og:image" content="https://www.appleberrytech.info/src/assets/logo.png" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://www.appleberrytech.info/nibp-details" />
+    <meta name="twitter:title" content="NIBP Module | Apple and Berry" />
+    <meta name="twitter:description" content="Compact non-invasive blood pressure measurement core designed for seamless medical device integration." />
+    <meta name="twitter:image" content="https://www.appleberrytech.info/src/assets/logo.png" />
     <meta name="description" content="Highly refined NIBP module using non-invasive oscillometric technique for fast, reliable blood pressure measurements. Ultra-low-profile footprint for seamless OEM integration.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/src/style.css">
     <script>
-        (function () {
-            const savedTheme = localStorage.getItem('theme') || 'dark';
-            document.documentElement.setAttribute('data-theme', savedTheme);
-        })();
-    </script>
+    (function () {
+      const savedTheme = localStorage.getItem('theme');
+      const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', savedTheme || (systemDark ? 'dark' : 'light'));
+    })();
+  </script>
     <style>
         .vsm-hero { padding: 160px 0 100px; text-align: center; }
         .vsm-hero h1 { font-size: 3.5rem; margin-bottom: 20px; color: var(--primary); }
@@ -24,6 +42,16 @@
         .vsm-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; margin-bottom: 80px; }
         .vsm-gallery img { width: 100%; border-radius: 16px; border: 1px solid var(--glass-border); object-fit: cover; }
     </style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TNNCNFFV6K"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-TNNCNFFV6K');
+    </script>
 </head>
 
 <body>
