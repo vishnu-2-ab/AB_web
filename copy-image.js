@@ -7,14 +7,6 @@ const filesToCopy = [
     dest: 'public/monitor/vsm/new_vsm_hero.jpeg'
   },
   {
-    src: 'C:/Users/Admin/Downloads/VN20260804_101114.mp4',
-    dest: 'public/monitor/vsm/VN20260804_101114.mp4'
-  },
-  {
-    src: 'C:/Users/Admin/Downloads/VN20260717_144653.mp4',
-    dest: 'public/monitor/vsm/VN20260717_144653.mp4'
-  },
-  {
     src: 'C:/Users/Admin/Downloads/file_00000000484c8211b1d58e22db1cb523~2.jpg.jpeg',
     dest: 'public/monitor/vsm/vsm-detail-1.jpg'
   },
@@ -43,5 +35,23 @@ filesToCopy.forEach(file => {
     }
   } catch (err) {
     console.error(`Error copying ${file.src}:`, err);
+  }
+});
+
+// Clean up any old large local mp4 files
+const oldVideos = [
+  'public/monitor/vsm/VN20260804_101114.mp4',
+  'public/monitor/vsm/VN20260717_144653.mp4'
+];
+
+oldVideos.forEach(file => {
+  try {
+    const p = resolve(process.cwd(), file);
+    if (fs.existsSync(p)) {
+      fs.unlinkSync(p);
+      console.log(`Successfully deleted local copy of old video: ${file}`);
+    }
+  } catch (err) {
+    console.error(`Error deleting old video file ${file}:`, err);
   }
 });
